@@ -29,7 +29,9 @@ class PDFProcessor:
         metrics = {
             'revenue': self._query_metric(db, 'revenue or sales figures'),
             'net_income': self._query_metric(db, 'net income or profit'),
-            'cash_flow': self._query_metric(db, 'operating cash flow'),
+            'operating_cash_flow': self._query_metric(db, 'operating cash flow or cash from operations'),
+            'retained_earnings': self._query_metric(db, 'retained earnings or accumulated earnings'),
+            'risk_factors': self._query_metric(db, 'risk factors or material risks'),
             'guidance': self._query_metric(db, 'future guidance or outlook')
         }
         return metrics
