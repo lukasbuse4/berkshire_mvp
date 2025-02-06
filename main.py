@@ -9,9 +9,9 @@ def main():
     processor = PDFProcessor()
     
     # Example usage
-    current_pdf = "data/earnings_2024.pdf"
-    previous_pdf = "data/earnings_2023.pdf"
-    
+    current_pdf =  "data/brkdata/earnings_2022.pdf"
+    previous_pdf = "data/brkdata/earnings_2023.pdf"
+
     # Process current report
     current_chunks = processor.load_pdf(current_pdf)
     current_metrics = processor.extract_financials(current_chunks)

@@ -1,0 +1,61 @@
+~/workspace$ python main.py
+/home/runner/workspace/src/pdf_processor.py:16: LangChainDeprecationWarning: Importing PyPDFLoader from langchain.document_loaders is deprecated. Please replace deprecated imports:
+
+>> from langchain.document_loaders import PyPDFLoader
+
+with new imports of:
+
+>> from langchain_community.document_loaders import PyPDFLoader
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.document_loaders import PyPDFLoader
+/home/runner/workspace/src/pdf_processor.py:18: LangChainDeprecationWarning: Importing Chroma from langchain.vectorstores is deprecated. Please replace deprecated imports:
+
+>> from langchain.vectorstores import Chroma
+
+with new imports of:
+
+>> from langchain_community.vectorstores import Chroma
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.vectorstores import Chroma
+/home/runner/workspace/src/pdf_processor.py:19: LangChainDeprecationWarning: Importing OpenAIEmbeddings from langchain.embeddings is deprecated. Please replace deprecated imports:
+
+>> from langchain.embeddings import OpenAIEmbeddings
+
+with new imports of:
+
+>> from langchain_community.embeddings import OpenAIEmbeddings
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.embeddings import OpenAIEmbeddings
+/home/runner/workspace/src/pdf_processor.py:29: LangChainDeprecationWarning: The class `OpenAIEmbeddings` was deprecated in LangChain 0.0.9 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-openai package and should be used instead. To use it run `pip install -U :class:`~langchain-openai` and import as `from :class:`~langchain_openai import OpenAIEmbeddings``.
+  self.embeddings = OpenAIEmbeddings()
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/langchain_community/embeddings/openai.py", line 330, in validate_environment
+    import openai
+ModuleNotFoundError: No module named 'openai'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/workspace/main.py", line 29, in <module>
+    main()
+  File "/home/runner/workspace/main.py", line 9, in main
+    processor = PDFProcessor()
+                ^^^^^^^^^^^^^^
+  File "/home/runner/workspace/src/pdf_processor.py", line 29, in __init__
+    self.embeddings = OpenAIEmbeddings()
+                      ^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/langchain_core/_api/deprecation.py", line 214, in warn_if_direct_instance
+    return wrapped(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/pydantic/main.py", line 214, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/pydantic/_internal/_decorators_v1.py", line 148, in _wrapper1
+    return validator(values)
+           ^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/langchain_core/utils/pydantic.py", line 218, in wrapper
+    return func(cls, values)
+           ^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/langchain_community/embeddings/openai.py", line 332, in validate_environment
+    raise ImportError(
+ImportError: Could not import openai python package. Please install it with `pip install openai`.

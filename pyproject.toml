@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "workspace"
+version = "0.1.0"
+description = "Add your description here"
+authors = ["lukas buse <lukas01buse@gmail.com>"]  
+
+[tool.poetry.dependencies]
+python = ">=3.9,<4.0"  # Keeps the existing Python version constraint
+pandas = ">=1.0,<3.0"  # Adjusted pandas version constraint
+langchain-community = "^0.3.16"
+openai = "^1.61.1"
+pypdf = "^5.2.0"
+tiktoken = "^0.8.0"
+python-dotenv = "^1.0.1"
+langchain-openai = "^0.3.3"
+
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
