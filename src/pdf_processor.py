@@ -4,6 +4,7 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import pandas as pd
 from typing import List, Dict
+from langchain_huggingface import HuggingFaceEmbeddings
 
 
 class PDFProcessor:
@@ -11,6 +12,7 @@ class PDFProcessor:
     def __init__(self):
         self.text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000,
                                                             chunk_overlap=100)
+        # In your PDFProcessor class
         self.embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 
     def load_pdf(self, file_path: str) -> List[str]:
