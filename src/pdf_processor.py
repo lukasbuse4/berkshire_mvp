@@ -1,6 +1,6 @@
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.vectorstores import Chroma  # Updated import
-from langchain_openai import OpenAIEmbeddings  # Updated import
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import pandas as pd
 from typing import List, Dict
@@ -11,7 +11,7 @@ class PDFProcessor:
     def __init__(self):
         self.text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000,
                                                             chunk_overlap=100)
-        self.embeddings = OpenAIEmbeddings()
+        self.embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 
     def load_pdf(self, file_path: str) -> List[str]:
         """Load and split PDF into chunks"""
