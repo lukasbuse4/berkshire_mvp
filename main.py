@@ -23,7 +23,23 @@ def index():
     
     # Compare reports
     comparison = processor.compare_reports(current_metrics, previous_metrics)
-    return comparison.to_html()
+    return f"""
+    <html>
+        <head>
+            <title>Financial Report Comparison</title>
+            <style>
+                body {{ font-family: Arial, sans-serif; margin: 20px; }}
+                table {{ border-collapse: collapse; width: 100%; }}
+                th, td {{ border: 1px solid #ddd; padding: 8px; text-align: left; }}
+                th {{ background-color: #f2f2f2; }}
+            </style>
+        </head>
+        <body>
+            <h1>Financial Report Comparison</h1>
+            {comparison.to_html(index=False)}
+        </body>
+    </html>
+    """
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=3000)
