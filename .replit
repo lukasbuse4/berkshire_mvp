@@ -1,2 +1,13 @@
 [nix]
 channel = "stable-24_05"
+
+[workflows]
+runButton = "Run"
+
+[[workflows.workflow]]
+name = "Run"
+author = 38412738
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python main.py"
