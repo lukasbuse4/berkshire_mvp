@@ -1,3 +1,4 @@
+
 from flask import Flask
 import os
 from src.pdf_processor import PDFProcessor
@@ -17,18 +18,18 @@ def get_stock_data(symbol="BRK-B"):
 def index():
     load_dotenv()
     processor = PDFProcessor()
-
+    
     current_pdf = "data/brkdata/earnings_2022.pdf"
     previous_pdf = "data/brkdata/earnings_2023.pdf"
 
     current_chunks = processor.load_pdf(current_pdf)
     current_metrics = processor.extract_financials(current_chunks)
-
+    
     previous_chunks = processor.load_pdf(previous_pdf)
     previous_metrics = processor.extract_financials(previous_chunks)
-
+    
     stock_price, price_change = get_stock_data()
-
+    
     def extract_value(text):
         import re
         numbers = re.findall(r'\$?\d+\.?\d*\s*[BMK]?illion?|\$?\d+\.?\d*', text)
@@ -87,7 +88,7 @@ def index():
                         {price_change >= 0 and '↑' or '↓'} {abs(price_change):.2f}%
                     </div>
                 </div>
-
+                
                 <div class="metrics-grid">
                     {"".join([f'''
                     <div class="metric-card">
