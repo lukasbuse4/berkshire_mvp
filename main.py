@@ -76,13 +76,17 @@ def index():
                 .change {{ font-weight: 500; }}
                 .positive {{ color: #00c853; }}
                 .negative {{ color: #ff1744; }}
+                .inline-price {{ 
+                    font-size: 24px;
+                    color: #4caf50;
+                    margin-left: 10px;
+                }}
             </style>
         </head>
         <body>
             <div class="container">
                 <div class="stock-card">
-                    <h2>BRK.B Stock</h2>
-                    <div class="stock-price">${stock_price:.2f}</div>
+                    <h2>Berkshire Hathaway (BRK.B) <span class="inline-price">${stock_price:.2f}</span></h2>
                     <div class="change {price_change >= 0 and 'positive' or 'negative'}">
                         {price_change >= 0 and '↑' or '↓'} {abs(price_change):.2f}%
                     </div>
