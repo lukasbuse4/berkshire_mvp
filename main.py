@@ -15,19 +15,26 @@ def get_stock_data(symbol="BRK-B"):
 
 @app.route('/')
 def index():
-    load_dotenv()
-    processor = PDFProcessor()
+    try:
+        load_dotenv()
+        processor = PDFProcessor()
 
-    current_pdf = "data/brkdata/earnings_2022.pdf"
-    previous_pdf = "data/brkdata/earnings_2023.pdf"
+        current_pdf = "data/brkdata/earnings_2022.pdf"
+        previous_pdf = "data/brkdata/earnings_2023.pdf"
 
-    current_chunks = processor.load_pdf(current_pdf)
-    current_metrics = processor.extract_financials(current_chunks)
+        # Check if files exist
+        if not os.path.exists(current_pdf) or not os.path.exists(previous_pdf):
+            return "Error: PDF files not found", 500
 
-    previous_chunks = processor.load_pdf(previous_pdf)
-    previous_metrics = processor.extract_financials(previous_chunks)
+        current_chunks = processor.load_pdf(current_pdf)
+        current_metrics = processor.extract_financials(current_chunks)
+
+        previous_chunks = processor.load_pdf(previous_pdf)
+        previous_metrics = processor.extract_financials(previous_chunks)
 
     stock_price, price_change = get_stock_data()
+    except Exception as e:
+        return f"Error: {str(e)}", 500
 
     def extract_value(text):
         import re
